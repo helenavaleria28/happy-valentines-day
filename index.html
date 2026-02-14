@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>for you 🤍</title>
+
+  <style>
+    body {
+      margin: 0;
+      height: 100vh;
+      background: linear-gradient(135deg, #ffdde1, #fff1f4);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-family: 'Comic Sans MS', cursive;
+      overflow: hidden;
+    }
+
+    .card {
+      background: white;
+      padding: 35px;
+      border-radius: 24px;
+      text-align: center;
+      box-shadow: 0 15px 40px rgba(0,0,0,0.15);
+      max-width: 420px;
+      animation: fadeIn 1s ease;
+    }
+
+    h1 {
+      color: #ff5c8a;
+      margin-bottom: 10px;
+    }
+
+    p {
+      font-size: 16px;
+    }
+
+    button {
+      padding: 10px 22px;
+      border-radius: 30px;
+      border: none;
+      font-size: 15px;
+      cursor: pointer;
+      margin: 10px;
+    }
+
+    #yesBtn {
+      background: #ff5c8a;
+      color: white;
+    }
+
+    #noBtn {
+      background: #e0e0e0;
+      position: absolute;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(15px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .heart {
+      position: fixed;
+      font-size: 18px;
+      animation: float 4s linear infinite;
+      color: #ff5c8a;
+    }
+
+    @keyframes float {
+      from {
+        transform: translateY(100vh);
+        opacity: 1;
+      }
+      to {
+        transform: translateY(-10vh);
+        opacity: 0;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="card" id="card">
+    <h1>hii arfaa🤍</h1>
+    <p>14 february. us?</p>
+    <button id="yesBtn">YESSS</button>
+    <button id="noBtn">NO</button>
+  </div>
+
+  <script>
+    const noBtn = document.getElementById("noBtn");
+    const yesBtn = document.getElementById("yesBtn");
+    const card = document.getElementById("card");
+
+    noBtn.addEventListener("mouseover", () => {
+      const x = Math.random() * (window.innerWidth - 100);
+      const y = Math.random() * (window.innerHeight - 50);
+      noBtn.style.left = x + "px";
+      noBtn.style.top = y + "px";
+    });
+
+    yesBtn.addEventListener("click", () => {
+      card.innerHTML = `
+        <h1>happy valentine’s day 🤍</h1>
+
+        <p>
+        i’ve been thinking about today and about you, and i just realized how grateful i am to have you in my life. you have this quiet way of making things feel lighter, safer, and better without even trying. being with you feels easy, and that’s something i don’t take for granted.
+        </p>
+
+        <p>
+        thank you for the little things you do, the way you listen, the way you care, the way you stay. thank you for making me feel seen and appreciated in ways i didn’t even know i needed. with you, i feel comfortable being myself, and that means more to me than you probably realize.
+        </p>
+
+        <p>
+        valentine’s day isn’t really about the day itself for me, it’s about the person i get to think of when i hear the word love. and that person is you. i’m really happy i get to choose you, today and every other day, even when things aren’t perfect.
+        </p>
+
+        <p>
+        i hope you know how special you are to me, not just today, but always.
+        </p>
+
+        <div class="heart">🤍</div>
+      `;
+
+      createHearts();
+    });
+
+    function createHearts() {
+      for (let i = 0; i < 25; i++) {
+        const heart = document.createElement("div");
+        heart.className = "heart";
+        heart.innerHTML = "🤍";
+        heart.style.left = Math.random() * 100 + "vw";
+        heart.style.animationDuration = (Math.random() * 3 + 2) + "s";
+        document.body.appendChild(heart);
+
+        setTimeout(() => {
+          heart.remove();
+        }, 5000);
+      }
+    }
+  </script>
+
+</body>
+</html>
